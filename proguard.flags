@@ -1,0 +1,3 @@
+# Both classes are named from panel XML and resolved with Class.forName at runtime.
+-keep class com.android.systemui.car.win98.Win98TitleBarController { *; }
+-keep class com.android.systemui.car.win98.Win98TitleBarView { *; }

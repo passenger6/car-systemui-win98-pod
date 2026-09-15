@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Windows 98 default scheme. All RRO-overridable. -->
+    <color name="win98_title_active_start">#FF000080</color>
+    <color name="win98_title_active_end">#FF1084D0</color>
+    <color name="win98_title_inactive_start">#FF808080</color>
+    <color name="win98_title_inactive_end">#FFB5B5B5</color>
+    <color name="win98_title_text">#FFFFFFFF</color>
+    <color name="win98_face">#FFC0C0C0</color>
+    <color name="win98_light">#FFFFFFFF</color>
+    <color name="win98_shadow">#FF808080</color>
+    <color name="win98_dark_shadow">#FF000000</color>
+    <color name="win98_glyph">#FF000000</color>
+    <color name="win98_shim">#FF000000</color>
+</resources>

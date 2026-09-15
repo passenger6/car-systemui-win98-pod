@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Close: an X across the glyph box. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/win98_glyph_size"
+    android:height="@dimen/win98_glyph_size"
+    android:viewportWidth="14"
+    android:viewportHeight="14">
+    <path
+        android:strokeColor="@color/win98_glyph"
+        android:strokeWidth="2"
+        android:pathData="M0,0 L14,14 M14,0 L0,14"/>
+</vector>

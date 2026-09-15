@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Restore: two overlapping window outlines, the front one filled with the face colour so it
+     hides the one behind it. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/win98_glyph_size"
+    android:height="@dimen/win98_glyph_size"
+    android:viewportWidth="14"
+    android:viewportHeight="14">
+    <!-- back window -->
+    <path
+        android:fillColor="@color/win98_glyph"
+        android:pathData="M3.5,0 H14 V2 H3.5 Z"/>
+    <path
+        android:strokeColor="@color/win98_glyph"
+        android:strokeWidth="2"
+        android:pathData="M4.5,1 H13 V9.5 H4.5 Z"/>
+    <!-- front window -->
+    <path
+        android:fillColor="@color/win98_face"
+        android:pathData="M0,3.5 H9.8 V14 H0 Z"/>
+    <path
+        android:fillColor="@color/win98_glyph"
+        android:pathData="M0,3.5 H9.8 V5.5 H0 Z"/>
+    <path
+        android:strokeColor="@color/win98_glyph"
+        android:strokeWidth="2"
+        android:pathData="M1,4.5 H8.8 V13 H1 Z"/>
+</vector>

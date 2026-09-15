@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Minimize: a short bar along the bottom-left of the glyph box. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/win98_glyph_size"
+    android:height="@dimen/win98_glyph_size"
+    android:viewportWidth="14"
+    android:viewportHeight="14">
+    <path
+        android:fillColor="@color/win98_glyph"
+        android:pathData="M0,12 H12 V14 H0 Z"/>
+</vector>

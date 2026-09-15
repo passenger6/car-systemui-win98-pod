@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Height of the title strip that sits on top of the target panel. RRO-overridable. -->
+    <dimen name="win98_title_bar_height">42dp</dimen>
+    <!-- Size of a minimized-window chip on the bottom edge of the display. -->
+    <dimen name="win98_chip_width">180dp</dimen>
+    <dimen name="win98_chip_height">42dp</dimen>
+    <dimen name="win98_chip_margin">8dp</dimen>
+    <dimen name="win98_chip_gap">6dp</dimen>
+    <!-- Space to leave free at the left edge for a navigation bar; override in the product RRO. -->
+    <dimen name="win98_chip_inset_left">0dp</dimen>
+    <!-- Title bar buttons (Windows 98: 16x14 at 96 dpi; scaled for a car display). -->
+    <dimen name="win98_button_width">32dp</dimen>
+    <dimen name="win98_button_height">28dp</dimen>
+    <dimen name="win98_button_gap">3dp</dimen>
+    <!-- The glyph inside a title bar button (win98_glyph_*.xml), centred in the button. -->
+    <dimen name="win98_glyph_size">14dp</dimen>
+    <dimen name="win98_title_text_size">16sp</dimen>
+    <dimen name="win98_title_padding">8dp</dimen>
+    <!-- Chrome around the task: sides, bottom resize bar, corner hit target. -->
+    <dimen name="win98_frame_width">4dp</dimen>
+    <dimen name="win98_resize_bar_height">24dp</dimen>
+    <dimen name="win98_resize_corner">28dp</dimen>
+    <dimen name="win98_min_client">120dp</dimen>
+</resources>

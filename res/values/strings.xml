@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="win98_untitled" translatable="false">Untitled</string>
+    <string name="win98_minimize" translatable="false">Minimize</string>
+    <string name="win98_maximize" translatable="false">Maximize</string>
+    <string name="win98_restore" translatable="false">Restore</string>
+    <string name="win98_close" translatable="false">Close</string>
+</resources>

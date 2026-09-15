@@ -1,0 +1,18 @@
+android_library {
+    name: "CarSystemUI-Win98",
+
+    srcs: [
+        "src/**/*.java",
+        "src/**/*.kt",
+    ],
+    static_libs: [
+        "CarSystemUI-Shared",
+    ],
+    resource_dirs: [
+        "res",
+    ],
+    plugins: ["dagger2-compiler"],
+    optimize: {
+        proguard_flags_files: ["proguard.flags"],
+    },
+}

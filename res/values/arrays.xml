@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TaskPanel ids whose Win98 chrome must not steal focus or raise z-order.
+         Override in the product RRO. Empty = every window comes to the front. -->
+    <string-array name="win98_stay_back_panels"/>
+
+    <!-- TaskPanel ids that always stay above the Win98 windows: an app grid, a launcher
+         overlay, a notification shade. Raising a window never puts it over one of these, and
+         their own layer is never renumbered. Override in the product RRO.
+
+         Needed because a Win98 window's layer grows on every raise, so no fixed layer written
+         in XML can stay above it forever. The panel has to be named here to act as a ceiling. -->
+    <string-array name="win98_always_on_top_panels"/>
+</resources>

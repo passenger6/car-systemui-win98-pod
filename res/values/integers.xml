@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The layer Win98 windows must stay below, so the panels listed in
+         win98_always_on_top_panels keep covering them.
+
+         A window's layer grows by two on every raise, so nothing written in panel XML can stay
+         above it on its own. Set this to the lowest layer
+         any always-on-top panel uses (an app grid at layer="111" means 111 here). 0 or less
+         means "no ceiling": windows may be raised above everything.
+
+         Override in the product RRO alongside win98_always_on_top_panels; the two belong
+         together and drift apart silently if only one is changed. -->
+    <integer name="win98_always_on_top_layer">0</integer>
+</resources>

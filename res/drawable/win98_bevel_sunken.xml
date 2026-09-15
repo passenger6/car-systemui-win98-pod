@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The pressed Windows 98 edge: a shadow line along the top and left. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape><solid android:color="@color/win98_shadow"/></shape>
+    </item>
+    <item android:left="1px" android:top="1px">
+        <shape><solid android:color="@color/win98_face"/></shape>
+    </item>
+</layer-list>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The raised Windows 98 edge: light top/left, dark bottom/right, a shadow line just inside
+     the dark one. Layers are painted in order, each inset so only the wanted edge of the
+     previous one stays visible. 1px, not 1dp: the original edges are single pixels. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape><solid android:color="@color/win98_dark_shadow"/></shape>
+    </item>
+    <item android:right="1px" android:bottom="1px">
+        <shape><solid android:color="@color/win98_light"/></shape>
+    </item>
+    <item android:left="1px" android:top="1px" android:right="1px" android:bottom="1px">
+        <shape><solid android:color="@color/win98_shadow"/></shape>
+    </item>
+    <item android:left="1px" android:top="1px" android:right="2px" android:bottom="2px">
+        <shape><solid android:color="@color/win98_face"/></shape>
+    </item>
+</layer-list>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Maximize: one window outline with a thick title edge. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/win98_glyph_size"
+    android:height="@dimen/win98_glyph_size"
+    android:viewportWidth="14"
+    android:viewportHeight="14">
+    <path
+        android:fillColor="@color/win98_glyph"
+        android:pathData="M0,0 H14 V2 H0 Z"/>
+    <path
+        android:strokeColor="@color/win98_glyph"
+        android:strokeWidth="2"
+        android:pathData="M1,1 H13 V13 H1 Z"/>
+</vector>
