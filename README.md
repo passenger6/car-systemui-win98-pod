@@ -8,6 +8,9 @@ Built as a **pod**: an `android_library` wired into `CarSystemUI` through Dagger
 Scalable UI's public controller surface: no reflection, no changes to `car-scalable-ui-lib` or
 `car-wm-shell-lib`.
 
+How it was built, and why it looks the way it does:
+[Building a desktop on AAOS with the Scalable UI framework](https://medium.com/@passenger6/building-a-desktop-on-aaos-with-scalable-ui-framework-dc339ed3cc1c).
+
 ![Four apps in Win98 windows on an Android Automotive screen: a map, Settings, a clock and Minesweeper](docs/screenshot.png)
 
 ## What it does
@@ -183,6 +186,34 @@ Event ids are `_Win98_<targetPanelId>_<Minimize|Close|Restore|Fullscreen|Drop_a|
 The pool's windows get all of this at registration; only product panels need the XML.
 
 ## Configure
+
+### Turning the pod off
+
+The pod is on by default. One system property keeps it out of a running system:
+
+```
+adb shell setprop debug.win98.enabled false && adb shell 'kill $(pidof com.android.systemui)'
+```
+
+The kill needs `adb root`; SystemUI restarts on its own.
+
+Disabled, the pod registers no panels, observes no transitions, watches no task stack and
+claims no launch root: it is absent rather than idle. Confirm in logcat:
+
+```
+Win98WindowPool: pod disabled by debug.win98.enabled=false
+```
+
+Set it back to `true` and restart SystemUI to turn the pod on; no reboot is needed, because the
+property is read on every start attempt.
+
+Two things worth knowing about the name. The `debug.` prefix is what lets SystemUI read the
+property at all: `get_prop(domain, debug_prop)` in `system/sepolicy/private/domain.te` grants
+that namespace to every domain, so no SELinux rule and no manifest permission are involved. And
+`debug.` is not `persist.`, so a reboot clears the value and the pod comes back on. For a
+setting that survives a reboot, override a resource instead.
+
+### Resources
 
 Every resource below is overridable by an RRO targeting `com.android.systemui`.
 

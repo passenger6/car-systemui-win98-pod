@@ -32,6 +32,7 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
@@ -100,6 +101,16 @@ public class Win98WindowPool implements Transitions.TransitionObserver {
     /** Panel ids are {@code win98_window_<n>}; their bars are {@code win98_window_<n>_bar}. */
     static final String WINDOW_PREFIX = "win98_window_";
     static final String BAR_SUFFIX = "_bar";
+
+    /**
+     * Set this to {@code false} to keep the pod out of the running system; it defaults to on.
+     *
+     * <p>The {@code debug.} prefix is the reason this reads without a policy change:
+     * {@code get_prop(domain, debug_prop)} in system/sepolicy/private/domain.te grants that
+     * namespace to every domain, so SystemUI needs neither a new SELinux rule nor a manifest
+     * permission. It is not a {@code persist.} property, so the value is cleared by a reboot.
+     */
+    private static final String ENABLED_PROPERTY = "debug.win98.enabled";
 
     /**
      * Windows registered at boot. A window's root task stack is created asynchronously after
@@ -186,6 +197,12 @@ public class Win98WindowPool implements Transitions.TransitionObserver {
      * the shell main thread. Posting from here queues behind that whole pass.
      */
     private void onShellInit() {
+        // Checked here as well as in start(): without it a disabled pod still waits on
+        // PanelConfigReadStateMonitor for a config it will never use.
+        if (!SystemProperties.getBoolean(ENABLED_PROPERTY, true)) {
+            Log.i(TAG, "pod disabled by " + ENABLED_PROPERTY + "=false");
+            return;
+        }
         mShellMainExecutor.execute(this::startWhenPanelsExist);
     }
 
@@ -219,12 +236,22 @@ public class Win98WindowPool implements Transitions.TransitionObserver {
 
     /**
      * Register the initial windows and start routing launches into them. Safe to call more than
-     * once.
+     * once, and a no-op while {@link #ENABLED_PROPERTY} is {@code false}.
      *
      * @param displayId the display the pool lives on
      */
     public void start(int displayId) {
         if (mStarted) return;
+        // Everything the pod does to the system happens below: it registers panels, observes
+        // transitions, watches the task stack and claims the launch root. Returning here leaves
+        // all of it undone, so a disabled pod is absent rather than idle. mStarted stays false:
+        // the property is read again on the next call, which is what makes a setprop + SystemUI
+        // restart enough to turn the pod on without a reboot.
+        if (!SystemProperties.getBoolean(ENABLED_PROPERTY, true)) {
+            Log.i(TAG, "pod disabled by " + ENABLED_PROPERTY + "=false at start(); "
+                    + "no panels registered");
+            return;
+        }
         mStarted = true;
         mDisplayId = displayId;
 
